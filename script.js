@@ -1,5 +1,120 @@
-// Smooth scrolling for navigation links
+// Enhanced Interactive Website Features
 document.addEventListener('DOMContentLoaded', function() {
+    
+    // Animated counter for hero stats
+    function animateCounters() {
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 200;
+        
+        counters.forEach(counter => {
+            const animate = () => {
+                const value = +counter.getAttribute('data-target');
+                const data = +counter.innerText;
+                const time = value / speed;
+                
+                if (data < value) {
+                    counter.innerText = Math.ceil(data + time);
+                    setTimeout(animate, 1);
+                } else {
+                    counter.innerText = value;
+                }
+            };
+            animate();
+        });
+    }
+    
+    // Trigger counter animation when hero is visible
+    const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                setTimeout(animateCounters, 1000);
+                heroObserver.unobserve(entry.target);
+            }
+        });
+    });
+    
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) {
+        heroObserver.observe(heroSection);
+    }
+    
+    // Expandable solution features
+    const expandableFeatures = document.querySelectorAll('.expandable-feature');
+    expandableFeatures.forEach(feature => {
+        const header = feature.querySelector('.feature-header');
+        header.addEventListener('click', () => {
+            const isExpanded = feature.classList.contains('expanded');
+            
+            // Close all other features
+            expandableFeatures.forEach(f => f.classList.remove('expanded'));
+            
+            // Toggle current feature
+            if (!isExpanded) {
+                feature.classList.add('expanded');
+            }
+        });
+    });
+    
+    // Progress indicator for weekly journey
+    function updateProgressIndicator() {
+        const sections = ['week1', 'week2', 'week3'];
+        const steps = document.querySelectorAll('.progress-step');
+        const progressLine = document.querySelector('.progress-line::after') || document.querySelector('.progress-line');
+        
+        let activeWeek = 1;
+        
+        sections.forEach((sectionId, index) => {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                const rect = section.getBoundingClientRect();
+                const isVisible = rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
+                
+                if (isVisible) {
+                    activeWeek = index + 1;
+                }
+            }
+        });
+        
+        // Update active step
+        steps.forEach((step, index) => {
+            step.classList.toggle('active', index + 1 <= activeWeek);
+        });
+        
+        // Update progress line
+        if (progressLine) {
+            const progressPercentage = (activeWeek / 3) * 100;
+            progressLine.style.setProperty('--progress-width', `${progressPercentage}%`);
+        }
+    }
+    
+    // Progress step click handlers
+    const progressSteps = document.querySelectorAll('.progress-step');
+    progressSteps.forEach((step, index) => {
+        step.addEventListener('click', () => {
+            const weekId = `week${index + 1}`;
+            const targetSection = document.getElementById(weekId);
+            if (targetSection) {
+                const navHeight = document.querySelector('.nav').offsetHeight;
+                const targetPosition = targetSection.offsetTop - navHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // Enhanced scroll tracking
+    function enhancedScrollTracking() {
+        updateActiveNavLink();
+        updateProgressIndicator();
+    }
+    
+    window.addEventListener('scroll', enhancedScrollTracking);
+    
+    // Initialize on load
+    updateProgressIndicator();
     // Get all navigation links
     const navLinks = document.querySelectorAll('.nav-link');
     
