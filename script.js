@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!firstSection || !lastSection) return;
             
             const firstSectionTop = firstSection.offsetTop - 200;
-            const lastSectionBottom = lastSection.offsetTop + lastSection.offsetHeight + 200;
+            const lastSectionBottom = lastSection.offsetTop + lastSection.offsetHeight;
             const wasInJourneyArea = isInJourneyArea;
             isInJourneyArea = scrollPosition >= firstSectionTop && scrollPosition <= lastSectionBottom;
             
