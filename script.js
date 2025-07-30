@@ -55,16 +55,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Floating Progress Button System
-    function initFloatingProgressButton() {
-        const progressBar = document.querySelector('.journey-progress');
+    // Dual Progress Bar System (Large + Floating)
+    function initProgressBars() {
+        const largeProgressBar = document.querySelector('.journey-progress');
+        const floatingProgressBar = document.querySelector('.journey-progress-floating');
         const navbar = document.querySelector('.nav');
         const sections = ['ideation', 'creation', 'implementation'];
-        const steps = document.querySelectorAll('.progress-step');
-        const progressLine = document.querySelector('.progress-line');
+        
+        // Get both sets of progress steps
+        const largeSteps = largeProgressBar.querySelectorAll('.progress-step');
+        const floatingSteps = floatingProgressBar.querySelectorAll('.progress-step');
+        const largeProgressLine = largeProgressBar.querySelector('.progress-line');
+        const floatingProgressLine = floatingProgressBar.querySelector('.progress-line');
         
         // Get section elements
         const sectionElements = sections.map(id => document.getElementById(id));
+        
+        // Debouncing variables
+        let scrollTimeout;
+        let lastScrollY = window.scrollY;
+        let isInJourneyArea = false;
         
         // Set navbar height CSS custom property
         function updateNavbarHeight() {
@@ -76,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         updateNavbarHeight();
         
-        function updateFloatingButton() {
+        function updateProgressBars() {
             const scrollPosition = window.scrollY;
             const viewportHeight = window.innerHeight;
             
@@ -88,18 +98,23 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const firstSectionTop = firstSection.offsetTop - 200;
             const lastSectionBottom = lastSection.offsetTop + lastSection.offsetHeight + 200;
-            const isInJourneyArea = scrollPosition >= firstSectionTop && scrollPosition <= lastSectionBottom;
+            const wasInJourneyArea = isInJourneyArea;
+            isInJourneyArea = scrollPosition >= firstSectionTop && scrollPosition <= lastSectionBottom;
             
-            // Handle floating button visibility
-            if (isInJourneyArea) {
-                progressBar.classList.add('floating');
-                document.body.style.paddingTop = '0';
-            } else {
-                progressBar.classList.remove('floating');
-                document.body.style.paddingTop = '0';
+            // Handle visibility transitions only when state changes
+            if (isInJourneyArea !== wasInJourneyArea) {
+                if (isInJourneyArea) {
+                    // Hide large progress bar and show floating
+                    largeProgressBar.classList.add('hidden');
+                    floatingProgressBar.classList.add('visible');
+                } else {
+                    // Show large progress bar and hide floating
+                    largeProgressBar.classList.remove('hidden');
+                    floatingProgressBar.classList.remove('visible');
+                }
             }
             
-            // Update step highlighting (cumulative)
+            // Update step highlighting (cumulative) for both bars
             let activeSteps = 0;
             
             sectionElements.forEach((section, index) => {
@@ -113,49 +128,84 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
             
-            // Apply active state to steps
-            steps.forEach((step, index) => {
-                const isActive = index < activeSteps;
-                step.classList.toggle('active', isActive);
+            // Apply active state to both sets of steps
+            [largeSteps, floatingSteps].forEach(stepSet => {
+                stepSet.forEach((step, index) => {
+                    const isActive = index < activeSteps;
+                    step.classList.toggle('active', isActive);
+                });
             });
             
-            // Update progress line
-            if (progressLine && activeSteps > 0) {
-                const progressPercentage = (activeSteps / sections.length) * 100;
-                progressLine.style.setProperty('--progress-width', `${progressPercentage}%`);
-            }
-        }
-        
-        // Progress step click handlers with smooth scroll
-        steps.forEach((step, index) => {
-            step.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const sectionId = sections[index];
-                const targetSection = document.getElementById(sectionId);
-                
-                if (targetSection) {
-                    const navHeight = navbar ? navbar.offsetHeight : 0;
-                    const targetPosition = targetSection.offsetTop - navHeight - 20;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
+            // Update both progress lines
+            [largeProgressLine, floatingProgressLine].forEach(progressLine => {
+                if (progressLine && activeSteps > 0) {
+                    const progressPercentage = (activeSteps / sections.length) * 100;
+                    progressLine.style.setProperty('--progress-width', `${progressPercentage}%`);
                 }
             });
-        });
+        }
         
-        // Initialize
-        window.addEventListener('scroll', updateFloatingButton);
+        // Debounced scroll handler
+        function handleScroll() {
+            // Cancel previous timeout
+            if (scrollTimeout) {
+                clearTimeout(scrollTimeout);
+            }
+            
+            // Only update if scroll direction changed or significant movement
+            const currentScrollY = window.scrollY;
+            const scrollDelta = Math.abs(currentScrollY - lastScrollY);
+            
+            if (scrollDelta > 10) {
+                updateProgressBars();
+                lastScrollY = currentScrollY;
+            }
+            
+            // Set timeout for final update
+            scrollTimeout = setTimeout(() => {
+                updateProgressBars();
+                lastScrollY = window.scrollY;
+            }, 50);
+        }
+        
+        // Progress step click handlers for both bars
+        function addClickHandlers(stepSet) {
+            stepSet.forEach((step, index) => {
+                step.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const sectionId = sections[index];
+                    const targetSection = document.getElementById(sectionId);
+                    
+                    if (targetSection) {
+                        const navHeight = navbar ? navbar.offsetHeight : 0;
+                        const targetPosition = targetSection.offsetTop - navHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+        
+        addClickHandlers(largeSteps);
+        addClickHandlers(floatingSteps);
+        
+        // Initialize with proper state
+        floatingProgressBar.classList.remove('visible'); // Ensure floating starts hidden
+        largeProgressBar.classList.remove('hidden'); // Ensure large starts visible
+        
+        window.addEventListener('scroll', handleScroll);
         window.addEventListener('resize', () => {
             updateNavbarHeight();
-            updateFloatingButton();
+            updateProgressBars();
         });
-        updateFloatingButton();
+        updateProgressBars();
     }
     
-    // Initialize the floating progress button
-    initFloatingProgressButton();
+    // Initialize the dual progress bar system
+    initProgressBars();
     
     // Enhanced scroll tracking
     function enhancedScrollTracking() {
