@@ -55,66 +55,114 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Progress indicator for weekly journey
-    function updateProgressIndicator() {
-        const sections = ['week1', 'week2', 'week3'];
+    // Floating Progress Button System
+    function initFloatingProgressButton() {
+        const progressBar = document.querySelector('.journey-progress');
+        const navbar = document.querySelector('.nav');
+        const sections = ['ideation', 'creation', 'implementation'];
         const steps = document.querySelectorAll('.progress-step');
-        const progressLine = document.querySelector('.progress-line::after') || document.querySelector('.progress-line');
+        const progressLine = document.querySelector('.progress-line');
         
-        let activeWeek = 1;
+        // Get section elements
+        const sectionElements = sections.map(id => document.getElementById(id));
         
-        sections.forEach((sectionId, index) => {
-            const section = document.getElementById(sectionId);
-            if (section) {
-                const rect = section.getBoundingClientRect();
-                const isVisible = rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
-                
-                if (isVisible) {
-                    activeWeek = index + 1;
-                }
+        // Set navbar height CSS custom property
+        function updateNavbarHeight() {
+            if (navbar) {
+                const navHeight = navbar.offsetHeight;
+                document.documentElement.style.setProperty('--nav-height', `${navHeight}px`);
             }
-        });
-        
-        // Update active step
-        steps.forEach((step, index) => {
-            step.classList.toggle('active', index + 1 <= activeWeek);
-        });
-        
-        // Update progress line
-        if (progressLine) {
-            const progressPercentage = (activeWeek / 3) * 100;
-            progressLine.style.setProperty('--progress-width', `${progressPercentage}%`);
         }
+        
+        updateNavbarHeight();
+        
+        function updateFloatingButton() {
+            const scrollPosition = window.scrollY;
+            const viewportHeight = window.innerHeight;
+            
+            // Check if we're within the journey sections area
+            const firstSection = sectionElements[0];
+            const lastSection = sectionElements[sectionElements.length - 1];
+            
+            if (!firstSection || !lastSection) return;
+            
+            const firstSectionTop = firstSection.offsetTop - 200;
+            const lastSectionBottom = lastSection.offsetTop + lastSection.offsetHeight + 200;
+            const isInJourneyArea = scrollPosition >= firstSectionTop && scrollPosition <= lastSectionBottom;
+            
+            // Handle floating button visibility
+            if (isInJourneyArea) {
+                progressBar.classList.add('floating');
+                document.body.style.paddingTop = '0';
+            } else {
+                progressBar.classList.remove('floating');
+                document.body.style.paddingTop = '0';
+            }
+            
+            // Update step highlighting (cumulative)
+            let activeSteps = 0;
+            
+            sectionElements.forEach((section, index) => {
+                if (section) {
+                    const rect = section.getBoundingClientRect();
+                    
+                    // Check if section has been scrolled past (cumulative activation)
+                    if (rect.top <= viewportHeight / 2) {
+                        activeSteps = index + 1;
+                    }
+                }
+            });
+            
+            // Apply active state to steps
+            steps.forEach((step, index) => {
+                const isActive = index < activeSteps;
+                step.classList.toggle('active', isActive);
+            });
+            
+            // Update progress line
+            if (progressLine && activeSteps > 0) {
+                const progressPercentage = (activeSteps / sections.length) * 100;
+                progressLine.style.setProperty('--progress-width', `${progressPercentage}%`);
+            }
+        }
+        
+        // Progress step click handlers with smooth scroll
+        steps.forEach((step, index) => {
+            step.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const sectionId = sections[index];
+                const targetSection = document.getElementById(sectionId);
+                
+                if (targetSection) {
+                    const navHeight = navbar ? navbar.offsetHeight : 0;
+                    const targetPosition = targetSection.offsetTop - navHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Initialize
+        window.addEventListener('scroll', updateFloatingButton);
+        window.addEventListener('resize', () => {
+            updateNavbarHeight();
+            updateFloatingButton();
+        });
+        updateFloatingButton();
     }
     
-    // Progress step click handlers
-    const progressSteps = document.querySelectorAll('.progress-step');
-    progressSteps.forEach((step, index) => {
-        step.addEventListener('click', () => {
-            const weekId = `week${index + 1}`;
-            const targetSection = document.getElementById(weekId);
-            if (targetSection) {
-                const navHeight = document.querySelector('.nav').offsetHeight;
-                const targetPosition = targetSection.offsetTop - navHeight - 20;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
+    // Initialize the floating progress button
+    initFloatingProgressButton();
     
     // Enhanced scroll tracking
     function enhancedScrollTracking() {
         updateActiveNavLink();
-        updateProgressIndicator();
     }
     
     window.addEventListener('scroll', enhancedScrollTracking);
-    
-    // Initialize on load
-    updateProgressIndicator();
     // Get all navigation links
     const navLinks = document.querySelectorAll('.nav-link');
     
