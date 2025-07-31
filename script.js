@@ -292,6 +292,24 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(element);
     });
     
+    // Design Process Phase Animation Observer
+    const phaseObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    // Observe design process phases
+    const phaseElements = document.querySelectorAll('.phase-content, .phase-image');
+    phaseElements.forEach(element => {
+        phaseObserver.observe(element);
+    });
+    
     // Add hover effects for interactive elements
     const cards = document.querySelectorAll('.insight-card, .feature, .challenge-item');
     cards.forEach(card => {
