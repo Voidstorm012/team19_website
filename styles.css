@@ -395,11 +395,14 @@ p {
     margin-bottom: 0;
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    border-left: 5px solid #f56565;
-    border-top: 1px solid rgba(245, 101, 101, 0.1);
+    border-left: 5px solid var(--primary-color);
+    border-top: 1px solid rgba(46, 91, 59, 0.1);
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
 }
 
 .challenge-item::before {
@@ -409,14 +412,47 @@ p {
     right: 0;
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, rgba(245, 101, 101, 0.1), transparent);
+    background: linear-gradient(135deg, rgba(46, 91, 59, 0.1), transparent);
     border-radius: 0 0 0 100%;
 }
 
 .challenge-item:hover {
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 12px 40px rgba(245, 101, 101, 0.2);
-    border-left-color: #e53e3e;
+    box-shadow: 0 12px 40px rgba(46, 91, 59, 0.2);
+    border-left-color: var(--hover-color);
+}
+
+.challenge-item:hover .challenge-icon {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+}
+
+.challenge-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+    border-radius: 50%;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(46, 91, 59, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.challenge-text {
+    flex: 1;
+    padding-top: 0.5rem;
+}
+
+.challenge-text strong {
+    color: #2d3748;
+    display: block;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
 }
 
 /* Stakeholder Insights - Clean Timeline */
