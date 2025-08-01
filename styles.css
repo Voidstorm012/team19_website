@@ -5,12 +5,18 @@
     box-sizing: border-box;
 }
 
-/* Color Variables */
+/* GALLANT Brand Color Variables */
 :root {
-    --primary-color: #2E5B3B;
-    --secondary-color: #5A8D6B;
-    --hover-color: #3E744C;
-    --accent-color: #4A7355;
+    --gallant-extra-dark: #1C525E;
+    --gallant-dark: #477C3C;
+    --gallant-bright: #8FC53A;
+    --gallant-light: #D2E9AF;
+    
+    /* Legacy variables mapped to GALLANT colors */
+    --primary-color: var(--gallant-extra-dark);
+    --secondary-color: var(--gallant-dark);
+    --hover-color: var(--gallant-bright);
+    --accent-color: var(--gallant-light);
 }
 
 html {
@@ -47,7 +53,7 @@ h1 {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    color: #1a202c;
+    color: var(--gallant-extra-dark);
     text-align: center;
 }
 
@@ -55,7 +61,7 @@ h2 {
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 2rem;
-    color: #2d3748;
+    color: var(--gallant-extra-dark);
     text-align: center;
 }
 
@@ -63,7 +69,7 @@ h3 {
     font-size: 1.25rem;
     font-weight: 500;
     margin-bottom: 0.5rem;
-    color: #2d3748;
+    color: var(--gallant-extra-dark);
 }
 
 p {
@@ -94,7 +100,7 @@ p {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, rgba(46, 91, 59, 0.9), rgba(90, 141, 107, 0.9)), url('res/banner.jpg') center/cover;
+    background: linear-gradient(135deg, rgba(28, 82, 94, 0.9), rgba(71, 124, 60, 0.9)), url('res/banner.jpg') center/cover;
     color: white;
     padding: 4rem 0;
     min-height: 100vh;
@@ -303,8 +309,8 @@ p {
 }
 
 .nav-link:hover {
-    color: var(--primary-color);
-    border-bottom-color: var(--primary-color);
+    color: var(--gallant-extra-dark);
+    border-bottom-color: var(--gallant-extra-dark);
 }
 
 /* Sections */
@@ -325,7 +331,7 @@ p {
 }
 
 .alt-bg {
-    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    background: linear-gradient(135deg, #ffffff 0%, var(--gallant-light) 20%, rgba(210, 233, 175, 0.3) 100%);
     position: relative;
 }
 
@@ -424,7 +430,7 @@ p {
 
 .challenge-item:hover .challenge-icon {
     transform: scale(1.1);
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, var(--gallant-bright), var(--gallant-dark));
     color: white;
 }
 
@@ -434,12 +440,12 @@ p {
     justify-content: center;
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+    background: linear-gradient(135deg, var(--gallant-light), rgba(210, 233, 175, 0.7));
     border-radius: 50%;
     font-size: 1.5rem;
     flex-shrink: 0;
     transition: all 0.3s ease;
-    border: 2px solid rgba(46, 91, 59, 0.1);
+    border: 2px solid rgba(28, 82, 94, 0.1);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
@@ -470,7 +476,7 @@ p {
     top: 0;
     bottom: 0;
     width: 2px;
-    background: var(--primary-color);
+    background: var(--gallant-bright);
 }
 
 .timeline-item {
@@ -490,7 +496,7 @@ p {
     top: 5px;
     width: 24px;
     height: 24px;
-    background: var(--primary-color);
+    background: var(--gallant-bright);
     border-radius: 50%;
     color: white;
     font-weight: 600;
@@ -531,6 +537,81 @@ p {
         height: 20px;
         font-size: 0.7rem;
     }
+}
+
+/* Looking Ahead Section */
+.future-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.future-intro {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: #4a5568;
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.future-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.future-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 16px;
+    border-left: 4px solid var(--gallant-bright);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.future-feature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    border-left-color: var(--gallant-dark);
+}
+
+.future-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--gallant-light), rgba(210, 233, 175, 0.7));
+    border-radius: 50%;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    border: 2px solid rgba(28, 82, 94, 0.1);
+    transition: all 0.3s ease;
+}
+
+.future-feature:hover .future-icon {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, var(--gallant-bright), var(--gallant-dark));
+}
+
+.future-text h3 {
+    color: var(--gallant-extra-dark);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.future-text p {
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 0;
+    font-size: 0.95rem;
 }
 
 /* Solution Section */
@@ -602,7 +683,7 @@ p {
 }
 
 .feature-header h3 {
-    color: var(--primary-color);
+    color: var(--gallant-extra-dark);
     margin-bottom: 0;
     font-size: 1.1rem;
     flex: 1;
@@ -612,7 +693,7 @@ p {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background: var(--primary-color);
+    background: var(--gallant-bright);
     color: white;
     display: flex;
     align-items: center;
@@ -662,7 +743,7 @@ p {
     content: '✓';
     position: absolute;
     left: 0;
-    color: var(--primary-color);
+    color: var(--gallant-extra-dark);
     font-weight: bold;
 }
 
@@ -778,7 +859,7 @@ p {
 
 .journey-progress-floating .progress-step.active .step-circle {
     background: rgba(255, 255, 255, 0.9);
-    color: var(--primary-color);
+    color: var(--gallant-extra-dark);
     transform: none;
     box-shadow: none;
 }
@@ -830,7 +911,7 @@ p {
 
 .progress-step.active .step-circle {
     background: rgba(255, 255, 255, 0.95);
-    color: var(--primary-color);
+    color: var(--gallant-extra-dark);
     border-color: rgba(255, 255, 255, 0.9);
     box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.3), 0 12px 32px rgba(0, 0, 0, 0.15);
     transform: scale(1.1);
@@ -997,7 +1078,7 @@ p {
 }
 
 .phase-content h2 {
-    color: var(--primary-color);
+    color: var(--gallant-extra-dark);
     font-size: 2.5rem;
     margin-bottom: 2rem;
     text-align: left;
@@ -1107,7 +1188,7 @@ p {
     top: 30px;
     width: 12px;
     height: 12px;
-    background: var(--primary-color);
+    background: var(--gallant-bright);
     border-radius: 50%;
     border: 3px solid white;
     box-shadow: 0 0 0 3px var(--primary-color);
@@ -1171,7 +1252,7 @@ p {
 }
 
 .btn-primary {
-    background: var(--primary-color);
+    background: var(--gallant-bright);
     color: white;
 }
 
@@ -1182,12 +1263,12 @@ p {
 
 .btn-secondary {
     background: transparent;
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
+    color: var(--gallant-extra-dark);
+    border: 2px solid var(--gallant-dark);
 }
 
 .btn-secondary:hover {
-    background: var(--primary-color);
+    background: var(--gallant-bright);
     color: white;
     transform: translateY(-2px);
 }
@@ -1204,7 +1285,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--primary-color);
+    color: var(--gallant-extra-dark);
     font-weight: 500;
     text-align: center;
     transition: all 0.3s ease;
@@ -1229,7 +1310,7 @@ p {
 }
 
 .image-placeholder:hover {
-    border-color: var(--primary-color);
+    border-color: var(--gallant-extra-dark);
     color: var(--hover-color);
     background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
     transform: scale(1.02);
@@ -1334,7 +1415,7 @@ p {
 }
 
 .team-role {
-    color: var(--primary-color);
+    color: var(--gallant-extra-dark);
     font-weight: 500;
     font-size: 0.9rem;
     margin-bottom: 0;
@@ -1378,7 +1459,7 @@ p {
 }
 
 .footer-links a:hover {
-    color: var(--primary-color);
+    color: var(--gallant-extra-dark);
 }
 
 .footer-bottom {
@@ -1503,6 +1584,20 @@ p {
     .phase-image .image-placeholder {
         max-width: 350px;
         height: 250px;
+    }
+    
+    .future-features {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .future-feature {
+        padding: 1.5rem;
+    }
+    
+    .future-intro {
+        font-size: 1.1rem;
+        margin-bottom: 3rem;
     }
     
     .journey-image {
