@@ -238,24 +238,63 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Highlight active navigation link based on scroll position
     function updateActiveNavLink() {
-        const sections = document.querySelectorAll('.section');
         const navHeight = document.querySelector('.nav').offsetHeight;
+        const scrollPosition = window.scrollY;
+        const viewportHeight = window.innerHeight;
         let currentSectionId = '';
         
-        sections.forEach(section => {
+        // Define all main sections in order
+        const mainSections = [
+            'overview',
+            'challenge', 
+            'insights',
+            'design-process',
+            'solution',
+            'future',
+            'team'
+        ];
+        
+        // Check each main section
+        for (const sectionId of mainSections) {
+            const section = document.getElementById(sectionId);
+            if (!section) continue;
+            
             const sectionTop = section.offsetTop - navHeight - 50;
             const sectionBottom = sectionTop + section.offsetHeight;
-            const scrollPosition = window.scrollY;
             
+            // Check if we're in this section
             if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                currentSectionId = section.getAttribute('id');
+                currentSectionId = sectionId;
+                
+                // Special handling for design-process section
+                // Check if we're in a specific inner phase
+                if (sectionId === 'design-process') {
+                    const innerPhases = ['ideation', 'creation', 'implementation'];
+                    
+                    for (const phaseId of innerPhases) {
+                        const phaseElement = document.getElementById(phaseId);
+                        if (!phaseElement) continue;
+                        
+                        const phaseTop = phaseElement.offsetTop - navHeight - 50;
+                        const phaseBottom = phaseTop + phaseElement.offsetHeight;
+                        
+                        // If we're specifically in this phase area, keep design-process active
+                        // but we could extend this logic if we wanted phase-specific highlighting
+                        if (scrollPosition >= phaseTop && scrollPosition < phaseBottom) {
+                            // Stay with design-process as the active section
+                            break;
+                        }
+                    }
+                }
+                break;
             }
-        });
+        }
         
         // Update active link styling
         navLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href') === `#${currentSectionId}`) {
+            const linkHref = link.getAttribute('href');
+            if (linkHref === `#${currentSectionId}`) {
                 link.classList.add('active');
             }
         });

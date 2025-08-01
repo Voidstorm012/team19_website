@@ -313,6 +313,12 @@ p {
     border-bottom-color: var(--gallant-extra-dark);
 }
 
+.nav-link.active {
+    color: var(--gallant-extra-dark);
+    border-bottom-color: var(--gallant-bright);
+    font-weight: 600;
+}
+
 /* Sections */
 .section {
     padding: 6rem 0;
