@@ -769,6 +769,70 @@ p {
     padding: 0;
 }
 
+/* Reflections Section Styling */
+.reflections-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.reflections-intro {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #4a5568;
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.reflection-videos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.video-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.video-item .video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    background: #f8fafc;
+}
+
+.video-item .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+}
+
+.video-caption {
+    text-align: center;
+    font-size: 0.95rem;
+    color: #64748b;
+    margin-top: 1rem;
+    font-weight: 500;
+}
+
+/* Responsive design for reflection videos */
+@media (max-width: 768px) {
+    .reflection-videos {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
 /* Journey Progress Indicator - Large centered version */
 .journey-progress {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -1396,6 +1460,15 @@ p {
     width: 200px;
     border-radius: 50%;
     margin: 0 auto 1rem;
+}
+
+img.team-photo {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    object-fit: cover;
+    display: block;
 }
 
 /* Team Section */

@@ -252,6 +252,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'design-process',
             'future',
             'prototype',
+            'reflections',
             'team'
         ];
         
