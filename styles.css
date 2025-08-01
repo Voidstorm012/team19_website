@@ -726,7 +726,7 @@ p {
 }
 
 .expandable-feature.expanded .feature-details {
-    max-height: 200px;
+    max-height: 500px;
     opacity: 1;
     margin-top: 1rem;
 }
@@ -751,6 +751,22 @@ p {
     left: 0;
     color: var(--gallant-extra-dark);
     font-weight: bold;
+}
+
+.feature-details h4 {
+    color: var(--gallant-extra-dark);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.8rem 0;
+    padding: 0;
+}
+
+.feature-details p {
+    color: #4a5568;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
 }
 
 /* Journey Progress Indicator - Large centered version */

@@ -246,11 +246,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // Define all main sections in order
         const mainSections = [
             'overview',
-            'challenge', 
+            'challenge',
+            'solution', 
             'insights',
             'design-process',
-            'solution',
             'future',
+            'prototype',
             'team'
         ];
         

@@ -43,10 +43,11 @@
         <div class="nav-container">
             <a href="#overview" class="nav-link">Overview</a>
             <a href="#challenge" class="nav-link">The Problem</a>
+            <a href="#solution" class="nav-link">Solution</a>
             <a href="#insights" class="nav-link">Stakeholder Insights</a>
             <a href="#design-process" class="nav-link">Design Process</a>
-            <a href="#solution" class="nav-link">Solution</a>
             <a href="#future" class="nav-link">Looking Ahead</a>
+            <a href="#prototype" class="nav-link">Prototype</a>
             <a href="#team" class="nav-link">Team</a>
         </div>
     </nav>
@@ -60,7 +61,7 @@
                 <div class="content-with-image">
                     <div class="text-content">
                         <p class="placeholder-text">
-                            This project looks at how we can use gamification to make the CommuniMap platform more engaging. CommuniMap is a digital tool that lets users log their walking or cycling routes. Our goal is to add fun and rewarding features like streaks, virtual pets, and leaderboards to encourage people to use the app more regularly. We started by speaking with users to understand what motivates them, then built early prototypes in Figma to test different ideas. Through this process, we’re exploring how to make the app not just useful, but also enjoyable and something people want to come back to.
+                            This project focuses on designing a more engaging version of CommuniMap, a digital platform developed under the GALLANT initiative to support sustainable travel in Glasgow. While the original app enables users to log walking and cycling routes for community science, our goal was to apply design thinking to make it more engaging. Starting with a clear problem, we explored potential solutions through user research, ideation and prototyping, refining our ideas into a concept that balances playful interaction with purposeful functionality.
                         </p>
                     </div>
                     <div class="video-container">
@@ -112,8 +113,118 @@
             </div>
         </section>
 
+        <!-- Our Solution Section -->
+        <section id="solution" class="section">
+            <div class="container">
+                <h2>Our Proposed Solution</h2>
+                <div class="solution-content">
+                    <div class="solution-features">
+                        <div class="feature expandable-feature" data-feature="pet">
+                            <div class="feature-header">
+                                <h3>🐾 Virtual Pet System</h3>
+                                <span class="expand-icon">+</span>
+                            </div>
+                            <div class="feature-content">
+                                <p>Engage users with a virtual companion that grows and evolves based on their sustainable travel choices.</p>
+                                <div class="feature-details">
+                                    <ul>
+                                        <li>Pet health tied to sustainable transport usage</li>
+                                        <li>Different pet species unlock with milestones</li>
+                                        <li>Social sharing of pet achievements</li>
+                                    </ul>
+                                    <h4>Why this works</h4>
+                                    <p>Virtual companions provide a sense of responsibility and emotional attachment. Users are more likely to stay engaged when they feel invested in the progress and well-being of something they care about, even digitally. This taps into long-term motivation beyond just extrinsic rewards.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature expandable-feature" data-feature="currency">
+                            <div class="feature-header">
+                                <h3>💰 Currency & Rewards</h3>
+                                <span class="expand-icon">+</span>
+                            </div>
+                            <div class="feature-content">
+                                <p>Earn virtual currency through active travel that can be spent on cosmetic rewards and pet customizations.</p>
+                                <div class="feature-details">
+                                    <ul>
+                                        <li>Points earned per kilometer of sustainable travel</li>
+                                        <li>Bonus multipliers for consistent usage</li>
+                                        <li>Seasonal challenges with special rewards</li>
+                                    </ul>
+                                    <h4>Why this works</h4>
+                                    <p>Reward systems create positive reinforcement loops. Users are encouraged to build sustainable travel habits when there's a tangible payoff for consistency. A virtual currency is flexible, scalable, and allows for both short-term gratification and long-term goals.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature expandable-feature" data-feature="cosmetics">
+                            <div class="feature-header">
+                                <h3>🎨 Cosmetic Rewards</h3>
+                                <span class="expand-icon">+</span>
+                            </div>
+                            <div class="feature-content">
+                                <p>Unlock visual customizations and achievements to personalize the user experience.</p>
+                                <div class="feature-details">
+                                    <ul>
+                                        <li>Photo-based profile customization with swappable frames</li>
+                                        <li>Achievement badges and milestone galleries</li>
+                                        <li>Pet accessories and themed decorations</li>
+                                        <li>Simplified implementation to ensure feasibility and reduce complexity</li>
+                                    </ul>
+                                    <h4>Why this works</h4>
+                                    <p>Customization fosters a sense of identity and ownership. When users can personalize their experience (like decorating pets or adding profile flair), they become more emotionally connected to the platform. These rewards are also easy to implement without affecting functionality.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature expandable-feature" data-feature="map">
+                            <div class="feature-header">
+                                <h3>🗺️ 2D/3D Hybrid Map</h3>
+                                <span class="expand-icon">+</span>
+                            </div>
+                            <div class="feature-content">
+                                <p>Interactive mapping interface that combines the clarity of 2D with the engagement of 3D elements.</p>
+                                <div class="feature-details">
+                                    <ul>
+                                        <li>Toggle between 2D efficiency and 3D exploration</li>
+                                        <li>AR elements for real-world navigation</li>
+                                        <li>Community points of interest integration</li>
+                                    </ul>
+                                    <h4>Why this works</h4>
+                                    <p>A hybrid map supports both clarity and engagement. The 2D view offers usability and speed for everyday tracking, while the 3D/AR view makes exploration feel immersive and gamified. This balances utility with enjoyment.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature expandable-feature" data-feature="events">
+                            <div class="feature-header">
+                                <h3>📍 Event System</h3>
+                                <span class="expand-icon">+</span>
+                            </div>
+                            <div class="feature-content">
+                                <p>Dynamic event notifications and location-based challenges that connect digital engagement with real-world activities.</p>
+                                <div class="feature-details">
+                                    <ul>
+                                        <li>Push notifications for ongoing challenges and local events</li>
+                                        <li>Interactive event pins displayed directly on the map interface</li>
+                                        <li>Reward system for attending workshops and visiting specific locations</li>
+                                        <li>Community-driven event creation and participation tracking</li>
+                                    </ul>
+                                    <h4>Why this works</h4>
+                                    <p>Events give users a reason to return. Location-based and time-limited activities create urgency and excitement, while also promoting real-world movement. It supports community engagement and makes digital participation feel more grounded in the physical world.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="solution-image">
+                        <div class="image-placeholder large">
+                            <!-- Placeholder for concept image or screenshot -->
+                            <span>Concept Image / Screenshot Placeholder</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
         <!-- Stakeholder Insights Section -->
-        <section id="insights" class="section">
+        <section id="insights" class="section alt-bg">
             <div class="container">
                 <h2>🎮 What We Learned from Our Stakeholder</h2>
                 <div class="insights-timeline">
@@ -267,132 +378,6 @@
             </div>
         </section>
 
-        <!-- Our Solution Section -->
-        <section id="solution" class="section alt-bg">
-            <div class="container">
-                <h2>Our Proposed Solution</h2>
-                <div class="solution-content">
-                    <div class="solution-features">
-                        <div class="feature expandable-feature" data-feature="pet">
-                            <div class="feature-header">
-                                <h3>🐾 Virtual Pet System</h3>
-                                <span class="expand-icon">+</span>
-                            </div>
-                            <div class="feature-content">
-                                <p>Engage users with a virtual companion that grows and evolves based on their sustainable travel choices.</p>
-                                <div class="feature-details">
-                                    <ul>
-                                        <li>Pet health tied to sustainable transport usage</li>
-                                        <li>Different pet species unlock with milestones</li>
-                                        <li>Social sharing of pet achievements</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="feature expandable-feature" data-feature="currency">
-                            <div class="feature-header">
-                                <h3>💰 Currency & Rewards</h3>
-                                <span class="expand-icon">+</span>
-                            </div>
-                            <div class="feature-content">
-                                <p>Earn virtual currency through active travel that can be spent on cosmetic rewards and pet customizations.</p>
-                                <div class="feature-details">
-                                    <ul>
-                                        <li>Points earned per kilometer of sustainable travel</li>
-                                        <li>Bonus multipliers for consistent usage</li>
-                                        <li>Seasonal challenges with special rewards</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="feature expandable-feature" data-feature="cosmetics">
-                            <div class="feature-header">
-                                <h3>🎨 Cosmetic Rewards</h3>
-                                <span class="expand-icon">+</span>
-                            </div>
-                            <div class="feature-content">
-                                <p>Unlock visual customizations and achievements to personalize the user experience.</p>
-                                <div class="feature-details">
-                                    <ul>
-                                        <li>Photo-based profile customization with swappable frames</li>
-                                        <li>Achievement badges and milestone galleries</li>
-                                        <li>Pet accessories and themed decorations</li>
-                                        <li>Simplified implementation to ensure feasibility and reduce complexity</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="feature expandable-feature" data-feature="map">
-                            <div class="feature-header">
-                                <h3>🗺️ 2D/3D Hybrid Map</h3>
-                                <span class="expand-icon">+</span>
-                            </div>
-                            <div class="feature-content">
-                                <p>Interactive mapping interface that combines the clarity of 2D with the engagement of 3D elements.</p>
-                                <div class="feature-details">
-                                    <ul>
-                                        <li>Toggle between 2D efficiency and 3D exploration</li>
-                                        <li>AR elements for real-world navigation</li>
-                                        <li>Community points of interest integration</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="feature expandable-feature" data-feature="events">
-                            <div class="feature-header">
-                                <h3>📍 Event System</h3>
-                                <span class="expand-icon">+</span>
-                            </div>
-                            <div class="feature-content">
-                                <p>Dynamic event notifications and location-based challenges that connect digital engagement with real-world activities.</p>
-                                <div class="feature-details">
-                                    <ul>
-                                        <li>Push notifications for ongoing challenges and local events</li>
-                                        <li>Interactive event pins displayed directly on the map interface</li>
-                                        <li>Reward system for attending workshops and visiting specific locations</li>
-                                        <li>Community-driven event creation and participation tracking</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="solution-image">
-                        <div class="image-placeholder large">
-                            <!-- Placeholder for concept image or screenshot -->
-                            <span>Concept Image / Screenshot Placeholder</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Prototype Demo -->
-                <div class="prototype-content" style="margin-top: 4rem;">
-                    <h3>See the Prototype</h3>
-                    <p>Experience our interactive prototype and see how the solution comes together:</p>
-                    <div class="prototype-buttons">
-                        <a href="#" class="btn btn-primary">View Figma Prototype</a>
-                        <a href="#" class="btn btn-secondary">Interactive Demo</a>
-                    </div>
-                    <div class="prototype-placeholder">
-                        <div class="image-placeholder large">
-                            <!-- Space for embedded prototype or preview -->
-                            <span>Prototype Preview Placeholder</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project Poster -->
-                <div class="poster-content" style="margin-top: 4rem;">
-                    <h3>Project Poster</h3>
-                    <div class="poster-placeholder">
-                        <!-- Full-width placeholder for poster image -->
-                        <div class="image-placeholder poster">
-                            <span>Project Poster Placeholder (PNG/JPG or PDF)</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Looking Ahead Section -->
         <section id="future" class="section alt-bg">
             <div class="container">
@@ -437,8 +422,42 @@
             </div>
         </section>
 
+        <!-- Prototype & Poster Section -->
+        <section id="prototype" class="section">
+            <div class="container">
+                <h2>Prototype & Documentation</h2>
+                
+                <!-- Prototype Demo -->
+                <div class="prototype-content" style="margin-top: 2rem;">
+                    <h3>See the Prototype</h3>
+                    <p>Experience our interactive prototype and see how the solution comes together:</p>
+                    <div class="prototype-buttons">
+                        <a href="#" class="btn btn-primary">View Figma Prototype</a>
+                        <a href="#" class="btn btn-secondary">Interactive Demo</a>
+                    </div>
+                    <div class="prototype-placeholder">
+                        <div class="image-placeholder large">
+                            <!-- Space for embedded prototype or preview -->
+                            <span>Prototype Preview Placeholder</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Poster -->
+                <div class="poster-content" style="margin-top: 4rem;">
+                    <h3>Project Poster</h3>
+                    <div class="poster-placeholder">
+                        <!-- Full-width placeholder for poster image -->
+                        <div class="image-placeholder poster">
+                            <span>Project Poster Placeholder (PNG/JPG or PDF)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Team Section -->
-        <section id="team" class="section">
+        <section id="team" class="section alt-bg">
             <div class="container">
                 <h2>We Are Team 19</h2>
                 <div class="team-grid">
@@ -487,6 +506,7 @@
                 </div>
             </div>
         </section>
+
     </main>
 
     <!-- Footer -->
