@@ -1040,12 +1040,23 @@ p {
 }
 
 /* Design Process Phase Styling */
+.phase-subsection {
+    margin-bottom: 4rem;
+}
+
+.phase-subsection.alt-bg {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 4rem 0;
+    margin: 2rem -2rem;
+    border-radius: 16px;
+}
+
 .journey-phase {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
     align-items: center;
-    margin-bottom: 6rem;
+    margin-bottom: 2rem;
     min-height: 400px;
     max-width: 1400px;
     margin-left: auto;
@@ -1080,6 +1091,14 @@ p {
 .phase-content h2 {
     color: var(--gallant-extra-dark);
     font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: left;
+    font-weight: 700;
+}
+
+.phase-content h3 {
+    color: var(--gallant-extra-dark);
+    font-size: 2.2rem;
     margin-bottom: 2rem;
     text-align: left;
     font-weight: 700;

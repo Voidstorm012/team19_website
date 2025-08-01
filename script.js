@@ -90,16 +90,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const scrollPosition = window.scrollY;
             const viewportHeight = window.innerHeight;
             
-            // Check if we're within the journey sections area
-            const firstSection = sectionElements[0];
-            const lastSection = sectionElements[sectionElements.length - 1];
+            // Check if we're within the design process section area
+            const designProcessSection = document.getElementById('design-process');
             
-            if (!firstSection || !lastSection) return;
+            if (!designProcessSection) return;
             
-            const firstSectionTop = firstSection.offsetTop - 200;
-            const lastSectionBottom = lastSection.offsetTop + lastSection.offsetHeight;
+            const designProcessTop = designProcessSection.offsetTop - 200;
+            const designProcessBottom = designProcessSection.offsetTop + designProcessSection.offsetHeight;
             const wasInJourneyArea = isInJourneyArea;
-            isInJourneyArea = scrollPosition >= firstSectionTop && scrollPosition <= lastSectionBottom;
+            isInJourneyArea = scrollPosition >= designProcessTop && scrollPosition <= designProcessBottom;
             
             // Handle visibility transitions only when state changes
             if (isInJourneyArea !== wasInJourneyArea) {
