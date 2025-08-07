@@ -696,15 +696,15 @@ p {
 }
 
 .expand-icon {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background: var(--gallant-bright);
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    font-size: 2.2rem;
     font-weight: bold;
     transition: all 0.3s ease;
 }
@@ -1805,3 +1805,29 @@ img.team-photo {
         font-size: 0.55rem;
     }
 }
+
+.feature-inner {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  .feature-text {
+    flex: 2;
+    min-width: 250px;
+  }
+  
+  .feature-image {
+    flex: 1;
+    max-width: 240px;
+  }
+  
+  .feature-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
