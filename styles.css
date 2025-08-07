@@ -845,11 +845,11 @@ p {
 }
 
 /* Hide large progress bar smoothly */
-.journey-progress.hidden {
+/* .journey-progress.hidden {
     opacity: 0;
     transform: translateY(-20px);
     pointer-events: none;
-}
+} */
 
 /* Floating Progress Button - Separate element */
 .journey-progress-floating {
