@@ -1900,3 +1900,208 @@ img.team-photo {
        text-align: center;
 }
 
+
+
+/* Retrospective Styles */
+.retrospective-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.retrospective-intro {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #4a5568;
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.retrospective-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.retrospective-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+.retrospective-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.retrospective-card.pride {
+    border-top: 4px solid var(--gallant-bright);
+}
+
+.retrospective-card.challenge {
+    border-top: 4px solid var(--gallant-extra-dark);
+}
+
+.retrospective-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(28, 82, 94, 0.1);
+}
+
+.retrospective-icon {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.retrospective-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.retrospective-item h4 {
+    color: var(--gallant-extra-dark);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.retrospective-item p {
+    color: #4a5568;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.retrospective-lessons {
+    background: linear-gradient(135deg, rgba(28, 82, 94, 0.05), rgba(71, 124, 60, 0.05));
+    padding: 2rem;
+    border-radius: 16px;
+    border-left: 4px solid var(--gallant-dark);
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.retrospective-lessons h3 {
+    color: var(--gallant-extra-dark);
+    margin: 1rem 0;
+}
+
+.retrospective-lessons p {
+    color: #4a5568;
+    line-height: 1.7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .retrospective-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .retrospective-card {
+        padding: 1.5rem;
+    }
+}
+
+
+/* Partner Reflection Styles */
+.partner-reflection {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin-top: 3rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid var(--gallant-bright);
+}
+
+.reflection-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.reflection-icon {
+    font-size: 2rem;
+}
+
+.reflection-content {
+    line-height: 1.7;
+    color: #4a5568;
+}
+
+.reflection-point {
+    margin-bottom: 2rem;
+}
+
+.reflection-point h4 {
+    color: var(--gallant-extra-dark);
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+.reflection-point.highlight {
+    background: rgba(210, 233, 175, 0.2);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 3px solid var(--gallant-dark);
+}
+
+.reflection-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1rem;
+}
+
+.reflection-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.reflection-list li:before {
+    content: "•";
+    color: var(--gallant-bright);
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: -3px;
+}
+
+.reflection-conclusion {
+    font-style: italic;
+    border-top: 1px solid rgba(28, 82, 94, 0.1);
+    padding-top: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .partner-reflection {
+        padding: 1.5rem;
+    }
+    
+    .reflection-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .reflection-point {
+        margin-bottom: 1.5rem;
+    }
+    
+    .reflection-point.highlight {
+        padding: 1rem;
+    }
+}
