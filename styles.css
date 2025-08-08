@@ -547,7 +547,7 @@ p {
 
 /* Looking Ahead Section */
 .future-content {
-    max-width: 1200px;
+    /* max-width: 1200px; */
     margin: 0 auto;
 }
 
@@ -1856,7 +1856,7 @@ img.team-photo {
 }
   
 .poster-thumbnail {
-  max-width: 300px;
+  max-width: 600px;
   cursor: zoom-in;
   border-radius: 10px;
   transition: transform 0.2s ease-in-out;
