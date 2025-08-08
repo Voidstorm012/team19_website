@@ -383,3 +383,30 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  const modal = document.getElementById("posterModal");
+  const posterThumb = document.getElementById("posterThumb");
+  const posterFull = document.getElementById("posterFull");
+  const closeModal = document.getElementById("closeModal");
+
+  // When clicking the thumbnail
+  posterThumb.onclick = function() {
+    modal.style.display = "block";
+    document.body.style.overflow = "hidden"; // Prevent scrolling when modal is open
+  };
+
+  // When clicking the close button
+  closeModal.onclick = function() {
+    modal.style.display = "none";
+    document.body.style.overflow = "auto"; // Re-enable scrolling
+  };
+
+  // When clicking outside the image
+  window.onclick = function(event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+      document.body.style.overflow = "auto";
+    }
+  };
+});
