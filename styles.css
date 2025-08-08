@@ -1839,8 +1839,10 @@ img.team-photo {
 
 .image5-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 equal-width columns */
-  gap: 16px; /* Space between items */
+  grid-template-columns: repeat(4, 1fr); /* 5 equal-width columns */
+  gap: 0px; /* Space between items */
+  width: 80%; /* Ensure grid takes full width */
+  margin: 0 auto; /* centers the grid */
 }
 
 .image-placeholder {
