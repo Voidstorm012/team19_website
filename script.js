@@ -162,20 +162,27 @@ document.addEventListener('DOMContentLoaded', function () {
         function addClickHandlers(stepSet) {
             stepSet.forEach((step, index) => {
                 step.addEventListener('click', (e) => {
+                    e.preventDefault();
                     e.stopPropagation();
+                    e.stopImmediatePropagation();
+                    
                     const sectionId = sections[index];
                     const targetSection = document.getElementById(sectionId);
 
                     if (targetSection) {
-                        const navHeight = navbar ? navbar.offsetHeight : 0;
-                        const targetPosition = targetSection.offsetTop - navHeight - 20;
+                        const navHeight = navbar ? navbar.offsetHeight : 70;
+                        // Use getBoundingClientRect for reliable positioning
+                        const rect = targetSection.getBoundingClientRect();
+                        const targetPosition = rect.top + window.scrollY - navHeight;
 
                         window.scrollTo({
                             top: targetPosition,
                             behavior: 'smooth'
                         });
                     }
-                });
+                    
+                    return false;
+                }, true); // Use capture phase
             });
         }
 
