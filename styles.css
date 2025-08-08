@@ -2106,3 +2106,86 @@ img.team-photo {
         padding: 1rem;
     }
 }
+
+/* Why It Matters Styles */
+.why-it-matters {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0 3rem;
+    border-left: 4px solid var(--gallant-extra-dark);
+    position: relative;
+    overflow: hidden;
+}
+
+.why-it-matters::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(28, 82, 94, 0.05) 0%, transparent 70%);
+}
+
+.why-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.why-it-matters h3 {
+    color: var(--gallant-extra-dark);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.impact-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.impact-number {
+    background: var(--gallant-bright);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+
+.impact-text {
+    color: #4a5568;
+    line-height: 1.6;
+}
+
+.impact-conclusion {
+    font-style: italic;
+    color: var(--gallant-extra-dark);
+    border-top: 1px solid rgba(28, 82, 94, 0.1);
+    padding-top: 1.5rem;
+    margin-top: 1rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .why-it-matters {
+        padding: 1.5rem;
+    }
+    
+    .impact-grid {
+        grid-template-columns: 1fr;
+    }
+}
