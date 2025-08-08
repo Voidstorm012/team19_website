@@ -1837,6 +1837,12 @@ img.team-photo {
   gap: 16px;
 }
 
+.image5-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 equal-width columns */
+  gap: 16px; /* Space between items */
+}
+
 .image-placeholder {
   background-color: #eef2f3;
   border-radius: 12px;
